@@ -1,0 +1,46 @@
+<%if false%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form accept-charset="UTF-8" action="/users " method="post">
+        <label for="email">E-mail</label>
+        <input type="text" id="email" name="user[email]">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="user[username]">
+        <label for="password">password</label>
+        <input type="password" id="password" name="user[password]">
+        <input type="submit"/>
+    </form>
+</body>
+</html>
+
+
+<%= form_tag("/users", method: "post") do %>
+    <%= label_tag(:username, "Username") %>
+    <%= text_field_tag(:username) %>
+    <%= label_tag(:email, "E-mail") %>
+    <%= text_field_tag(:email) %>
+    <%= label_tag(:password, "Password") %>
+    <%= text_field_tag(:password) %>
+    <%= submit_tag("submit") %>
+<% end %>
+
+<% end %>
+
+<%= form_with model: @user do |form| %>
+    <%= form.label :username, "Username" %>
+    <%= form.text_field :username, placeholder: "dododo" %>
+    <%= form.label :email, "E-mail"%>
+    <%= form.email_field :email %>
+    <%= form.label :password, "Password" %>
+    <%= form.password_field :password%>
+    <%= form.submit %>
+<% end %>
+
+
