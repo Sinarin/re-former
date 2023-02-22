@@ -24,9 +24,18 @@ class UsersController < ApplicationController
 
     def update
       @user = User.find(params[:id])
-      if params[:user][:username] == ""
-        params[:user][:username] = @user[:username]
+      unless params[:user][:username] == "" &&params[:user][:email] == "" && params[:user][:password ] == ""
+        if params[:user][:username] == ""
+          params[:user][:username] = @user[:username]
+        end
+        if params[:user][:password] == ""
+          params[:user][:password] = @user[:password]
+        end
+        if params[:user][:email] == ""
+          params[:user][:email] = @user[:email]
+        end
       end
+      
       if @user.update(user_params)
         
         redirect_to @user
