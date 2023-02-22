@@ -33,6 +33,12 @@
 
 <% end %>
 
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+sdafsadlfjadslfj;
+  </div>
+<% end %>
+
 <%= form_with model: @user do |form| %>
     <%= form.label :username, "Username" %>
     <%= form.text_field :username, placeholder: "dododo" %>

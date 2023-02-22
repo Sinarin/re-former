@@ -36,10 +36,19 @@
 
 
 
-<%= form_with model: @user, method: :update do |form| %>
-    <%= @user.errors.full_messages.each do |msg| %>
+
+<%= form_with model: @user do |form| %>
+    <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-        <% end %>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
     <%= form.label :username, "New Username" %>
     <%= form.text_field :username, placeholder: "dododo" %>
     <%= form.label :email, "E-mail"%>
